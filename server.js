@@ -35,6 +35,16 @@ app.get("/v", (req, res) => {
 }
 )
 
+app.post("/vuj" , (req,res)=>{
+    const sql = "INSTERT INTO 'versenyzok' ('ID','versenyzo') VALUES(?,?)";
+    const values=[req.body.ID, req.body.versenyzo];
+    db.query(sql, (err, result) => {
+        if (err) return res.status(500).json({error:"Hibas adatbazis muvelet"});
+        return res.json(result);
+    }
+    )
+}
+)
 
 app.get("/v6", (req, res) => {
 
